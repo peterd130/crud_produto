@@ -1,0 +1,55 @@
+<!doctype html>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 5px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+
+<body>
+
+     <div class="w3-container">
+    <h1>Produtos</h1>
+    
+
+    <p><a href="{% url 'cadastrar_produto'%}" class="w3-button w3-gray w3-round-xlarge">+ produto</a> </p>
+    
+        <table>
+            <tr class="w3-blue">
+                <th>Nome</th>
+                <th>Valor (R$)</th>
+                <th>Quantidade</th>
+                <th>Ações</th>
+                
+            </tr>
+                {% for produto in produtos %}
+                    <tr>
+                        <td> {{ produto.nome }}</td>
+                        <td> {{ produto.valor }}</td>
+                        <td> {{ produto.quantidade }}</td> 
+                        {% if produto %}
+                        <td>
+                            <a href="{% url 'modificar_produto' produto.id%}"  class="w3-button w3-green w3-round-xlarge">Modificar</a>
+                            <a href="{% url 'apagar_produto' produto.id%}"  class="w3-button w3-red w3-round-xlarge">Apagar</a>
+                        </td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+        </table>
+    
+    </div>
+</body>
+</html>
