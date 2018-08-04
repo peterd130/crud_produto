@@ -15,7 +15,7 @@ def cadastrar_produto(request):
         form.save()
         return redirect('listar_produtos')
 
-    return render(request, 'produtos-form.html', {'form': form})
+    return render(request, 'cadastro_produto.html', {'form': form})
 
 
 def modificar_produto(request, id):
@@ -26,7 +26,7 @@ def modificar_produto(request, id):
         form.save()
         return redirect('listar_produtos')
 
-    return render(request, 'produtos-form.html', {'form': form, 'produto': produto})
+    return render(request, 'modifica_produto.html', {'form': form, 'produto': produto})
 
 
 def apagar_produto(request, id):
